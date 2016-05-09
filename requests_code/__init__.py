@@ -7,13 +7,13 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View, Link
 
 from requests_code import config as _config
-from requests_code.views import bp
+from requests_code.views import generate, run
 
 
 nav = Nav()
 
 nav.register_element('top', Navbar(
-    View('Home', 'home.index'),
+    View('Home', 'generate.index'),
     Link('使用说明', 'http://www.baidu.com/'),
 ))
 
@@ -29,6 +29,7 @@ def create_app(config=None):
 
     Bootstrap(app)
     nav.init_app(app)
-    app.register_blueprint(bp)
+    app.register_blueprint(generate.bp)
+    app.register_blueprint(run.bp)
 
     return app
