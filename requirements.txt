@@ -4,3 +4,4 @@ flask-bootstrap
 flask-script
 flask-nav
 requests
+flask-sqlalchemy

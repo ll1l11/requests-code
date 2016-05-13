@@ -6,7 +6,8 @@ from flask_bootstrap import Bootstrap
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View, Link
 
-from requests_code import config as _config
+import config as _config
+from requests_code.database import db
 from requests_code.views import generate, run
 
 
@@ -26,6 +27,8 @@ def create_app(config=None):
         app.config.from_object(_config)
 
     app.jinja_env.autoescape = False
+
+    db.init_app(app)
 
     Bootstrap(app)
     nav.init_app(app)
